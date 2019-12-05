@@ -3,11 +3,11 @@
  * nicekkong JE Foundation
  */
 
-package com.nicekkong.springboot_2;
+package com.nicekkong.springboot;
 
 
-import com.nicekkong.springboot_2.domain.Member;
-import com.nicekkong.springboot_2.service.MemberService;
+import com.nicekkong.springboot.domain.Member;
+import com.nicekkong.springboot.service.MemberService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

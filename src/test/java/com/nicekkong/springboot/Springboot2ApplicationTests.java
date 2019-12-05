@@ -1,4 +1,4 @@
-package com.nicekkong.springboot_2;
+package com.nicekkong.springboot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
