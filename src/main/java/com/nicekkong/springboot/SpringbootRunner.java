@@ -101,7 +101,7 @@ public class SpringbootRunner implements ApplicationRunner {
         System.out.println(child.getName());
 
 
-        System.out.println("===================Embedded ID=======================");
+        System.out.println("===================Embedded ID======================");
         EmbeddedParentId eId = EmbeddedParentId.builder().id1(1).id2("nickname").build();
         EmbeddedParent ep = EmbeddedParent.builder().id(eId).nickName("nicekkong").build();
 
