@@ -21,5 +21,6 @@ public class Child {
     })
     private Parent parent;
 
+    @Column(name ="name")
     private String name;
 }
