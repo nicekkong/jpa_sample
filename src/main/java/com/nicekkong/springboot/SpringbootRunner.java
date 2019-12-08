@@ -1,7 +1,7 @@
 package com.nicekkong.springboot;
 
 import com.nicekkong.springboot.domain.Member;
-import com.nicekkong.springboot.domain.Team;
+import com.nicekkong.springboot.domain.TeamInfo;
 import com.nicekkong.springboot.domain.compound.*;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -23,20 +23,20 @@ public class SpringbootRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        Team team = Team.builder()
+        TeamInfo teamInfo = TeamInfo.builder()
                 .teamName("IT팀").build();
 
-        Team itTeam = entityManager.find(Team.class, 1);
+        TeamInfo itTeamInfo = entityManager.find(TeamInfo.class, 1);
 
         Member member = Member.builder()
                             .userName("nicekkong")
                             .age(30)
-                            .team(team).build();
+                            .teamInfo(teamInfo).build();
 
         Member member2 = Member.builder()
                 .userName("kbi")
                 .age(35)
-                .team(itTeam).build();
+                .teamInfo(itTeamInfo).build();
 
 
 
@@ -52,16 +52,16 @@ public class SpringbootRunner implements ApplicationRunner {
 //
 //        resultList.forEach(System.out::println);
 
-        Team supportTeam = Team.builder().teamName("지원팀").build();
+        TeamInfo supportTeamInfo = TeamInfo.builder().teamName("지원팀").build();
 //        Team supportTeam = Team.builder().build();
 //        Team supportTeam = new Team();
 //        supportTeam.setTeamName("지원팀");
 //        supportTeam.setTeamName("지원팀"); // Team.builder().teamName("지원팀").build();
 
         System.out.println("===================1====================");
-        entityManager.persist(team);
+        entityManager.persist(teamInfo);
         System.out.println("===================2====================");
-        entityManager.persist(supportTeam);
+        entityManager.persist(supportTeamInfo);
         System.out.println("===================3====================");
 
         entityManager.persist(member);
@@ -81,7 +81,7 @@ public class SpringbootRunner implements ApplicationRunner {
 
         System.out.println("member2.setTeam(supportTeam);");
         System.out.println("===================8====================");
-        member2.setTeam(supportTeam);
+        member2.setTeamInfo(supportTeamInfo);
         System.out.println("===================9====================");
 
 
@@ -102,10 +102,10 @@ public class SpringbootRunner implements ApplicationRunner {
 
 
         System.out.println("===================Embedded ID======================");
-        EmbeddedParentId eId = EmbeddedParentId.builder().id1(1).id2("nickname").build();
-        EmbeddedParent ep = EmbeddedParent.builder().id(eId).nickName("nicekkong").build();
+//        EmbeddedParentId eId = EmbeddedParentId.builder().id1(1).id2("nickname").build();
+//        EmbeddedParent ep = EmbeddedParent.builder().id(eId).nickName("nicekkong").build();
 
-        entityManager.persist(ep);
+//        entityManager.persist(ep);
 
 
 

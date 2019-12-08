@@ -18,7 +18,7 @@ import java.util.List;
 @Table(name="team")
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor @Builder
-public class Team {
+public class TeamInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,13 +26,13 @@ public class Team {
 
     private String teamName;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "teamInfo")
     @Builder.Default
     private List<Member> members = new ArrayList<>();
 
     public void addMember(Member member) {
         // 객체 기준 양방향 관계를 모두 맺어 준다.
         this.members.add(member);
-        member.setTeam(this);
+        member.setTeamInfo(this);
     }
 }

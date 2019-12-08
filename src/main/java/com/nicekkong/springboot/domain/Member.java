@@ -17,24 +17,23 @@ public class Member {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "NAME")
+//    @Column(name = "NAME")
     private String userName;
 
     private Integer age;
 
     @ManyToOne
-    @JoinColumn(name="team_id")
-    private Team team;
+    private TeamInfo teamInfo;
 
-    public void setTeam(Team team) {
+    public void setTeamInfo(TeamInfo teamInfo) {
 
         // 현재 관계를 먼저 끊어준다.
-        if(this.team != null) {
-            this.team.getMembers().remove(this);
+        if(this.teamInfo != null) {
+            this.teamInfo.getMembers().remove(this);
         }
 
         // 객체 기준 양방향 관계를 모두 맺어 준다.
-        this.team = team;
-        team.getMembers().add(this);
+        this.teamInfo = teamInfo;
+        teamInfo.getMembers().add(this);
     }
 }
