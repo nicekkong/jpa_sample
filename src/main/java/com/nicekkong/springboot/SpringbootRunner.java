@@ -2,7 +2,10 @@ package com.nicekkong.springboot;
 
 import com.nicekkong.springboot.domain.Member;
 import com.nicekkong.springboot.domain.TeamInfo;
-import com.nicekkong.springboot.domain.compound.*;
+import com.nicekkong.springboot.domain.base.Board;
+import com.nicekkong.springboot.domain.compound.Child;
+import com.nicekkong.springboot.domain.compound.Parent;
+import com.nicekkong.springboot.domain.compound.ParentId;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -73,7 +76,7 @@ public class SpringbootRunner implements ApplicationRunner {
 //        System.out.println("팀이름 ===> " + itMember.getTeam().getTeamName());
 
 
-        String jpql = "select m from Member m join m.team t where t.teamName = :teamName";
+        String jpql = "select m from Member m join m.teamInfo t where t.teamName = :teamName";
         List<Member> resultList = entityManager.createQuery(jpql, Member.class)
                 .setParameter("teamName", "IT팀").getResultList();
         System.out.println("===================7====================");
@@ -106,6 +109,19 @@ public class SpringbootRunner implements ApplicationRunner {
 //        EmbeddedParent ep = EmbeddedParent.builder().id(eId).nickName("nicekkong").build();
 
 //        entityManager.persist(ep);
+
+
+        Board board = Board.builder().title("my board").contents("I am a boy").build();
+
+        entityManager.persist(board);
+        System.out.println("1111111111111111111111111111111");
+        Board board2 = entityManager.find(Board.class, 1);
+        board2.setContents("my board2");
+        System.out.println("222222222222222222222222222222");
+
+        entityManager.persist(board2);
+        System.out.println("3333333333333333333333333333333333");
+
 
 
 
