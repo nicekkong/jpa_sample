@@ -8,6 +8,8 @@ package com.nicekkong.springboot.domain.embedded;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="worker")
@@ -33,4 +35,10 @@ public class Worker {
             @AttributeOverride(name="zipCode", column=@Column(name="company_zip_code"))
     })
     private Address companyAddress;
+
+
+    @ElementCollection(fetch = FetchType.LAZY) // default = FetchType.LAZY (1:N 관계 이므로...)
+    @CollectionTable(name="favorite_foods", joinColumns = @JoinColumn(name="worker_id"))
+    @Column(name="food_name")
+    private Set<String> favoriteFoods = new HashSet<>();
 }
