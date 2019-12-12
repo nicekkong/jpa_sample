@@ -25,4 +25,12 @@ public class Worker {
 
     @Embedded
     private Address homeAddress;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name="city", column=@Column(name="company_city")),
+            @AttributeOverride(name="street", column=@Column(name="company_street")),
+            @AttributeOverride(name="zipCode", column=@Column(name="company_zip_code"))
+    })
+    private Address companyAddress;
 }
